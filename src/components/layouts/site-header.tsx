@@ -61,8 +61,8 @@ const SiteHeader = ({ session }: SiteHeaderProps) => {
   // other profiles query
   const otherProfilesQuery = profileStore.profile
     ? api.profile.getOthers.useQuery(profileStore.profile.id, {
-        enabled: !!session?.user && !!profileStore.profile,
-      })
+      enabled: !!session?.user && !!profileStore.profile,
+    })
     : null
 
   return (
@@ -181,7 +181,7 @@ const SiteHeader = ({ session }: SiteHeaderProps) => {
                   ))}
                   {siteConfig.profileDropdownItems.map(
                     (item, index) =>
-                      item.title !== "Sign Out of Netflix" &&
+                      item.title !== "Sign Out of Webflix" &&
                       (item.href ? (
                         <DropdownMenuItem
                           key={index}
@@ -219,7 +219,7 @@ const SiteHeader = ({ session }: SiteHeaderProps) => {
                   <DropdownMenuSeparator />
                   {siteConfig.profileDropdownItems.map(
                     (item, index) =>
-                      item.title === "Sign Out of Netflix" && (
+                      item.title === "Sign Out of Webflix" && (
                         <DropdownMenuItem
                           key={index}
                           asChild

@@ -84,7 +84,7 @@ const AddProfileForm = ({ profiles, profileIcon }: AddProfileFormProps) => {
           <div className="space-y-3">
             <h1 className="text-3xl font-medium sm:text-5xl">Add Profile</h1>
             <p className="text-sm text-neutral-500 sm:text-base">
-              Add a profile for another person watching Netflix.
+              Add a profile for another person watching Webflix.
             </p>
           </div>
           <Separator className="bg-neutral-700" />
@@ -138,7 +138,7 @@ const AddProfileForm = ({ profiles, profileIcon }: AddProfileFormProps) => {
                 size="auto"
                 className={cn(
                   watch("name")?.length > 0 &&
-                    "bg-red-500 text-slate-900 dark:bg-red-600 dark:text-slate-50"
+                  "bg-red-500 text-slate-900 dark:bg-red-600 dark:text-slate-50"
                 )}
                 disabled={createProfileMutation.isLoading}
               >

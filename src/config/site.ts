@@ -4,9 +4,9 @@ import type { SiteConfig } from "@/types"
 import { Icons } from "@/components/icons"
 
 export const siteConfig: SiteConfig = {
-  name: "Netflix Web",
+  name: "Webflix Web",
   description:
-    "An open source Netflix clone built using the new app router, server components, trpc, and everything new in Next.js 13.",
+    "An open source Webflix clone built using the new app router, server components, trpc, and everything new in Next.js 13.",
   url: "https://netflx-web.vercel.app",
   ogImage: "https://netflx-web.vercel.app/opengraph-image.png",
   links: {
@@ -67,7 +67,7 @@ export const siteConfig: SiteConfig = {
       icon: Icons.help,
     },
     {
-      title: "Sign Out of Netflix",
+      title: "Sign Out of Webflix",
     },
   ],
   footerItems: [

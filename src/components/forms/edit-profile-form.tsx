@@ -174,7 +174,7 @@ const EditProfileForm = ({ profile }: EditProfileFormProps) => {
                     </span>
                     <span>
                       Your handle is a unique name {`that'll`} be used for
-                      playing with other Netflix members across all Netflix
+                      playing with other Webflix members across all Webflix
                       Games. Learn more
                     </span>
                   </label>
@@ -202,7 +202,7 @@ const EditProfileForm = ({ profile }: EditProfileFormProps) => {
                 size="auto"
                 className={cn(
                   watch("name")?.length > 0 &&
-                    "bg-red-500 text-slate-50 dark:bg-red-600 dark:text-slate-50"
+                  "bg-red-500 text-slate-50 dark:bg-red-600 dark:text-slate-50"
                 )}
                 disabled={updateProfileMutation.isLoading}
               >

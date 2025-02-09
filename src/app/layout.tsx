@@ -30,9 +30,9 @@ export const metadata = {
     "Server Components",
     "TRPC",
     "T3-App",
-    "Netflix",
-    "Netflix OTT",
-    "Netflix Clone",
+    "Webflix",
+    "Webflix OTT",
+    "Webflix Clone",
   ],
   authors: [
     {

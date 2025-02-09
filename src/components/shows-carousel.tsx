@@ -92,22 +92,24 @@ export default ShowsCarousel
 
 const ShowCard = ({ show }: { show: Show }) => {
   return (
-    <Image
-      src={`https://image.tmdb.org/t/p/w500/${
-        show.backdrop_path ?? show.poster_path ?? ""
-      }`}
-      alt={show.title ?? show.name ?? "poster"}
-      width={240}
-      height={135}
-      loading="lazy"
-      className="aspect-video cursor-pointer object-cover transition-all hover:z-20 hover:scale-110"
-      onClick={() => {
-        useModalStore.setState({
-          show: show,
-          open: true,
-          play: false,
-        })
-      }}
-    />
+    <div className="relative min-w-[240px] h-[135px]">
+      <Image
+        src={`https://image.tmdb.org/t/p/w500/${show.backdrop_path ?? show.poster_path ?? ""
+          }`}
+        alt={show.title ?? show.name ?? "poster"}
+        width={240}
+        height={135}
+        loading="lazy"
+        className="aspect-video cursor-pointer object-cover transition-all hover:z-20 hover:scale-110"
+        onClick={() => {
+          useModalStore.setState({
+            show: show,
+            open: true,
+            play: false,
+          })
+        }}
+      />
+      <span className="absolute bottom-2 left-2 font-bold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">{show.title ?? show.name ?? ""}</span>
+    </div>
   )
 }

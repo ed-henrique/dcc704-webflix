@@ -8,7 +8,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 
 export const metadata: Metadata = {
   title: "Help Center",
-  description: "Help Center for Netflx",
+  description: "Help Center for Webflix",
 }
 
 export default async function HelpCenterPage() {
