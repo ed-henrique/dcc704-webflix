@@ -10,7 +10,8 @@ RUN apk add --no-cache openssl zlib libgcc musl && \
 
 # Migrate
 COPY ./prisma/ .
-RUN yarn run postinstall
+RUN yarn run postinstall && \
+    yarn exec prisma migrate dev
 
 COPY . .
 
