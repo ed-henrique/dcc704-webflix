@@ -67,19 +67,21 @@ model VerificationToken {
 }
 
 model Profile {
-    id         String   @id @default(cuid())
-    userId     String
-    name       String
-    email      String?
-    pin        Int?
-    icon       Icon     @relation(fields: [iconId], references: [id], onDelete: Cascade)
-    language   LANGUAGE @default(ENGLISH)
-    gameHandle String?
-    user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-    createdAt  DateTime @default(now())
-    updatedAt  DateTime @updatedAt
-    iconId     String
-    myList     MyShow[]
+    id                String   @id @default(cuid())
+    userId            String
+    name              String
+    email             String?
+    pin               Int?
+    icon              Icon     @relation(fields: [iconId], references: [id], onDelete: Cascade)
+    language          LANGUAGE @default(ENGLISH)
+    gameHandle        String?
+    user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    createdAt         DateTime @default(now())
+    updatedAt         DateTime @updatedAt
+    iconId            String
+    myList            MyShow[] @relation("ProfileMyList")
+    lastWatchedShow   MyShow?  @relation("ProfileLastWatchedShow", fields: [lastWatchedShowId], references: [showId], onDelete: NoAction, onUpdate: NoAction)
+    lastWatchedShowId String?  @unique
 
     @@index([userId])
     @@index([iconId])
@@ -122,8 +124,9 @@ model MyShow {
     runtime            Int?
     adult              Boolean    @default(false)
     video              Boolean    @default(false)
-    profile            Profile?   @relation(fields: [profileId], references: [id])
+    profile            Profile?   @relation("ProfileMyList", fields: [profileId], references: [id])
     profileId          String?
+    lastWatchedProfile Profile?   @relation("ProfileLastWatchedShow")
 
     @@index([profileId])
 }

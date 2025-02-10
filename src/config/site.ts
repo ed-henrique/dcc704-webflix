@@ -4,7 +4,7 @@ import type { SiteConfig } from "@/types"
 import { Icons } from "@/components/icons"
 
 export const siteConfig: SiteConfig = {
-  name: "Webflix Web",
+  name: "Webflix",
   description:
     "An open source Webflix clone built using the new app router, server components, trpc, and everything new in Next.js 13.",
   url: "https://netflx-web.vercel.app",
