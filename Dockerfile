@@ -3,15 +3,14 @@ FROM node:lts-alpine
 WORKDIR /app
 
 # Install dependencies
-COPY ./yarn.lock .
-COPY ./package.json .
+COPY ./package.json ./yarn.lock .
 RUN apk add --no-cache openssl zlib libgcc musl && \
-    yarn install
+    yarn install --frozen-lockfile
 
 # Migrate
-COPY ./prisma/ .
+COPY ./prisma/ ./prisma/
 RUN yarn run postinstall && \
-    yarn exec prisma migrate dev
+    yarn exec prisma migrate deploy
 
 COPY . .
 
