@@ -42,9 +42,8 @@ const Hero = ({ shows }: HeroProps) => {
               )}
             />
             <Image
-              src={`https://image.tmdb.org/t/p/original/${
-                randomShow?.poster_path ?? randomShow?.backdrop_path ?? ""
-              }`}
+              src={`https://image.tmdb.org/t/p/original/${randomShow?.poster_path ?? randomShow?.backdrop_path ?? ""
+                }`}
               alt={randomShow?.title ?? "poster"}
               className="h-auto w-full object-cover"
               fill
@@ -57,7 +56,7 @@ const Hero = ({ shows }: HeroProps) => {
             </h1>
             <div className="flex space-x-2 text-xs font-semibold md:text-sm">
               <p className="text-green-600">
-                {randomShow?.vote_average * 10 ?? "-"}% Match
+                {Number(randomShow?.vote_average / 10).toLocaleString("en", { style: "percent", minimumFractionDigits: 2 }) ?? "-%"} Match
               </p>
               <p className="text-gray-300">{randomShow?.release_date ?? "-"}</p>
             </div>

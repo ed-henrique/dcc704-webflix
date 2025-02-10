@@ -48,10 +48,8 @@ const ShowModal = ({ open, setOpen }: ShowModalProps) => {
 
       try {
         const response = await fetch(
-          `https://api.themoviedb.org/3/${
-            modalStore.show?.media_type === "tv" ? "tv" : "movie"
-          }/${modalStore.show?.id}?api_key=${
-            env.NEXT_PUBLIC_TMDB_API_KEY
+          `https://api.themoviedb.org/3/${modalStore.show?.media_type === "tv" ? "tv" : "movie"
+          }/${modalStore.show?.id}?api_key=${env.NEXT_PUBLIC_TMDB_API_KEY
           }&language=en-US&append_to_response=videos`
         )
         const data = (await response.json()) as ShowWithGenreAndVideo
@@ -97,8 +95,8 @@ const ShowModal = ({ open, setOpen }: ShowModalProps) => {
   // my shows query
   const myShowsQuery = profileStore.profile
     ? api.myList.getAll.useQuery(profileStore.profile.id, {
-        enabled: !!userQuery.data,
-      })
+      enabled: !!userQuery.data,
+    })
     : null
 
   // add show mutation
@@ -199,35 +197,35 @@ const ShowModal = ({ open, setOpen }: ShowModalProps) => {
                     if (!modalStore.show || !profileStore.profile) return
 
                     isAdded ||
-                    myShowsQuery?.data?.find(
-                      (item) => item.id === modalStore.show?.id
-                    )
+                      myShowsQuery?.data?.find(
+                        (item) => item.id === modalStore.show?.id
+                      )
                       ? removeShowMuation.mutate({
-                          id: modalStore.show.id,
-                          profileId: profileStore.profile.id,
-                        })
+                        id: modalStore.show.id,
+                        profileId: profileStore.profile.id,
+                      })
                       : addShowMutation.mutate({
-                          profileId: profileStore.profile.id,
-                          id: modalStore.show.id,
-                          name: modalStore.show.name ?? "",
-                          title: modalStore.show.title ?? "",
-                          original_title: modalStore.show.original_title ?? "",
-                          poster_path: modalStore.show.poster_path ?? "",
-                          backdrop_path: modalStore.show.backdrop_path ?? "",
-                          overview: modalStore.show.overview ?? "",
-                          original_language: modalStore.show.original_language,
-                          media_type:
-                            modalStore.show.media_type === "tv"
-                              ? "tv"
-                              : "movie",
-                          popularity: modalStore.show.popularity,
-                          vote_average: modalStore.show.vote_average,
-                          vote_count: modalStore.show.vote_count,
-                          release_date: modalStore.show.release_date ?? "",
-                          first_air_date: modalStore.show.first_air_date ?? "",
-                          adult: modalStore.show.adult,
-                          video: modalStore.show.video,
-                        })
+                        profileId: profileStore.profile.id,
+                        id: modalStore.show.id,
+                        name: modalStore.show.name ?? "",
+                        title: modalStore.show.title ?? "",
+                        original_title: modalStore.show.original_title ?? "",
+                        poster_path: modalStore.show.poster_path ?? "",
+                        backdrop_path: modalStore.show.backdrop_path ?? "",
+                        overview: modalStore.show.overview ?? "",
+                        original_language: modalStore.show.original_language,
+                        media_type:
+                          modalStore.show.media_type === "tv"
+                            ? "tv"
+                            : "movie",
+                        popularity: modalStore.show.popularity,
+                        vote_average: modalStore.show.vote_average,
+                        vote_count: modalStore.show.vote_count,
+                        release_date: modalStore.show.release_date ?? "",
+                        first_air_date: modalStore.show.first_air_date ?? "",
+                        adult: modalStore.show.adult,
+                        video: modalStore.show.video,
+                      })
                   }}
                   disabled={
                     !userQuery.data ||
@@ -237,9 +235,9 @@ const ShowModal = ({ open, setOpen }: ShowModalProps) => {
                   }
                 >
                   {isAdded ||
-                  myShowsQuery?.data?.find(
-                    (item) => item.id === modalStore.show?.id
-                  ) ? (
+                    myShowsQuery?.data?.find(
+                      (item) => item.id === modalStore.show?.id
+                    ) ? (
                     <Icons.check className="h-5 w-5" aria-hidden="true" />
                   ) : (
                     <Icons.add className="h-5 w-5" aria-hidden="true" />
@@ -267,9 +265,9 @@ const ShowModal = ({ open, setOpen }: ShowModalProps) => {
           </DialogTitle>
           <div className="flex items-center space-x-2 text-sm sm:text-base">
             <p className="font-semibold text-green-400">
-              {Math.round((Number(modalStore.show?.vote_average) / 10) * 100) ??
-                "-"}
-              % Match
+              {(Number(modalStore.show?.vote_average) / 10).toLocaleString("en", { style: "percent", minimumFractionDigits: 2 }) ??
+                "-%"}
+              Match
             </p>
             {modalStore.show?.release_date ? (
               <p>{getYear(modalStore.show?.release_date)}</p>

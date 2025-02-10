@@ -38,11 +38,11 @@ export function MainNav({ items }: MainNavProps) {
         }}
       >
         <Image
-          src="/netflix-logo.svg"
+          src="/webflix.png"
           alt="netflix"
           width={1024}
           height={276.74}
-          className="h-auto w-28 object-cover transition-opacity hover:opacity-80 active:opacity-100"
+          className="h-auto w-28 object-cover transition-opacity hover:opacity-80 active:opacity-100 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.5)]"
           priority
         />
       </Link>
@@ -57,7 +57,7 @@ export function MainNav({ items }: MainNavProps) {
                   className={cn(
                     "flex items-center text-lg font-medium text-slate-300 transition hover:text-slate-300 hover:text-opacity-70 dark:text-slate-300 dark:hover:text-slate-300 dark:hover:text-opacity-70 sm:text-sm",
                     path === item.href &&
-                      "font-bold text-white dark:text-white",
+                    "font-bold text-white dark:text-white",
                     item.disabled && "cursor-not-allowed opacity-80"
                   )}
                   onClick={() => searchStore.setQuery("")}
