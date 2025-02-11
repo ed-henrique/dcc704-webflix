@@ -39,7 +39,7 @@ const BillingForm = ({ subscriptionPlan, isCanceled }: BillingFormProps) => {
     })
 
     if (!response?.ok) {
-      console.log(response.status, " Body ", response.body)
+      console.log(response.status, " Body ", response.json())
       return toast.error(
         "Something went wrong. Please refresh the page and try again."
       )
