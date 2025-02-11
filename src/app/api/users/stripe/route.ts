@@ -15,7 +15,6 @@ export async function POST(req: Request) {
   try {
     // Get stripe price id from request body
     const { planName } = (await req.json()) as { planName: string }
-    console.log(planName)
 
     // Find stripe price id from plan name
     const stripePriceId = subscriptionPlans.find(
@@ -109,6 +108,8 @@ export async function POST(req: Request) {
     if (error instanceof z.ZodError) {
       return new Response(JSON.stringify(error.issues), { status: 422 })
     }
+
+    console.log(error)
 
     return new Response(null, { status: 500 })
   }
