@@ -90,6 +90,7 @@ export async function POST(req: Request) {
     })
     const randomIcon =
       unusedIcons && unusedIcons[Math.floor(Math.random() * unusedIcons.length)]
+    console.log("Random Icon ", randomIcon)
 
     // TODO: check if payment is successful before creating profile
     if (!existingProfile) {
