@@ -7,6 +7,7 @@ import { stripe } from "@/lib/stripe"
 
 export async function POST(req: Request) {
   const body = await req.text()
+  console.log(body)
   const signature = headers().get("Stripe-Signature") as string
 
   let event: Stripe.Event
@@ -19,8 +20,7 @@ export async function POST(req: Request) {
     )
   } catch (error) {
     return new Response(
-      `Webhook Error: ${
-        error instanceof Error ? error.message : "Unknown error"
+      `Webhook Error: ${error instanceof Error ? error.message : "Unknown error"
       }`,
       { status: 400 }
     )
