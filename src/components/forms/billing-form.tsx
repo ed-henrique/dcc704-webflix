@@ -39,6 +39,7 @@ const BillingForm = ({ subscriptionPlan, isCanceled }: BillingFormProps) => {
     })
 
     if (!response?.ok) {
+      console.log(response.status, " Body ", response.body)
       return toast.error(
         "Something went wrong. Please refresh the page and try again."
       )
@@ -115,8 +116,8 @@ const BillingForm = ({ subscriptionPlan, isCanceled }: BillingFormProps) => {
             />
           )}
           {subscriptionPlan &&
-          !isCanceled &&
-          subscriptionPlan.name === selectedPlan?.name
+            !isCanceled &&
+            subscriptionPlan.name === selectedPlan?.name
             ? "Update"
             : "Subscribe"}
         </Button>
